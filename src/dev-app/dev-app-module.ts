@@ -66,6 +66,7 @@ import {TooltipDemo} from './tooltip/tooltip-demo';
 import {TreeDemoModule} from './tree/tree-demo-module';
 import {TypographyDemo} from './typography/typography-demo';
 import {VirtualScrollDemo} from './virtual-scroll/virtual-scroll-demo';
+import { TopBarDemo } from 'top-bar/top-bar-demo';
 
 @NgModule({
   imports: [
@@ -137,6 +138,7 @@ import {VirtualScrollDemo} from './virtual-scroll/virtual-scroll-demo';
     TooltipDemo,
     TypographyDemo,
     VirtualScrollDemo,
+    TopBarDemo,
   ],
   providers: [
     {provide: OverlayContainer, useClass: FullscreenOverlayContainer},

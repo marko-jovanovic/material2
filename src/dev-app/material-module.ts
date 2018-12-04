@@ -57,7 +57,8 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
+  MatTopBarModule,
 } from '@angular/material';
 
 
@@ -116,6 +117,7 @@ import {
     ExperimentalScrollingModule,
     DialogModule,
     DragDropModule,
+    MatTopBarModule
   ]
 })
 export class DevAppMaterialModule {}

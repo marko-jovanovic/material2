@@ -102,6 +102,7 @@ System.config({
     '@angular/material/tooltip': 'dist/packages/material/tooltip/index.js',
     '@angular/material/badge': 'dist/packages/material/badge/index.js',
     '@angular/material/tree': 'dist/packages/material/tree/index.js',
+    '@angular/material/top-bar': 'dist/packages/material/top-bar/index.js'
   },
   packages: {
     // Set the default extension for the root package, because otherwise the dev-app can't

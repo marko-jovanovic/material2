@@ -65,6 +65,7 @@ export class DevAppComponent {
     {name: 'Tree', route: '/tree'},
     {name: 'Typography', route: '/typography'},
     {name: 'Virtual Scrolling', route: '/virtual-scroll'},
+    {name: 'Top Bar', route: '/top-bar'}
   ];
 
   constructor(

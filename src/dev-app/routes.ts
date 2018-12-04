@@ -53,6 +53,7 @@ import {TooltipDemo} from './tooltip/tooltip-demo';
 import {TreeDemo} from './tree/tree-demo';
 import {TypographyDemo} from './typography/typography-demo';
 import {VirtualScrollDemo} from './virtual-scroll/virtual-scroll-demo';
+import { TopBarDemo } from 'top-bar/top-bar-demo';
 
 export const DEV_APP_ROUTES: Routes = [
   {path: '', component: DevAppHome},
@@ -103,4 +104,5 @@ export const DEV_APP_ROUTES: Routes = [
   {path: 'connected-overlay', component: ConnectedOverlayDemo},
   {path: 'virtual-scroll', component: VirtualScrollDemo},
   {path: 'examples', component: ExamplesPage},
+  {path: 'top-bar', component: TopBarDemo }
 ];
