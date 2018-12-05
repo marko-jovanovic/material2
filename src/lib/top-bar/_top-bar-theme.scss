@@ -1,0 +1,30 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/style/elevation';
+
+@mixin _mat-top-bar-theme-property($theme, $property, $hue) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    .mat-top-bar-regular, .mat-top-bar-prominent, .mat-top-bar-dense, .mat-top-bar-prominent-dense {
+        &.mat-primary {
+            #{$property}: mat-color($primary, $hue);
+        }
+        
+        &.mat-accent {
+            #{$property}: mat-color($accent, $hue);
+        }
+    
+        &.mat-warn {
+            #{$property}: mat-color($warn, $hue);
+        }
+    }
+}
+
+@mixin mat-top-bar-theme($theme) {
+    @include _mat-top-bar-theme-property($theme, 'color', default-contrast);
+    @include _mat-top-bar-theme-property($theme, 'background-color', default);
+}
