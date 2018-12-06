@@ -9,8 +9,14 @@ const DEFAULT_TOP_BAR_TYPE: TopBarType = 'regular';
 
 export type TopBarType = 'regular' | 'prominent' | 'dense' | 'prominent-dense';
 
-interface TopBarTheme extends CanColor {
+export interface TopBarTheme extends CanColor {
     type: TopBarType;
+}
+
+export interface TopBarMenuAction {
+    matIcon: string;
+    menuText: string;
+    onClick: Function;
 }
 
 @Component({
@@ -24,12 +30,14 @@ interface TopBarTheme extends CanColor {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MatTopBar implements TopBarTheme {
+    @Input() title: string = '';
     @Input() color: ThemePalette = DEFAULT_TOP_BAR_COLOR;
     @Input() type: TopBarType    = DEFAULT_TOP_BAR_TYPE;
+    @Input() menuActions: TopBarMenuAction[] = [];
 
     constructor () {}
 
-    _setTopBarClasses() {
+    _setupTopBarClasses() {
         let topBarClasses: any = {};
         topBarClasses[`mat-${this.color}`] = true;
         topBarClasses[`mat-top-bar-${this.type}`] = true;
