@@ -25,10 +25,10 @@
     "flatModuleId": null
   },
   "include": [
-    "**/*.spec.ts",
     "index.ts"
   ],
   "exclude": [
-    "**/schematics/**/*.ts"
+    "**/schematics/**/*.ts",
+    "**/*.spec.ts"
   ]
 }

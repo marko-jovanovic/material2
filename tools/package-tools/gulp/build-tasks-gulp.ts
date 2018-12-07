@@ -79,7 +79,7 @@ export function createPackageBuildTasks(buildPackage: BuildPackage, preBuildTask
     // tries to resolve all required assets.
     `${taskName}:assets`,
     // Build the ESM output that includes all test files. Also build assets for the package.
-    `${taskName}:build:esm:tests`,
+    //  `${taskName}:build:esm:tests`,
     // Inline assets into ESM output.
     `${taskName}:assets:inline`
   ));
@@ -96,7 +96,7 @@ export function createPackageBuildTasks(buildPackage: BuildPackage, preBuildTask
    */
 
   task(`${taskName}:build:esm`, () => buildPackage.compile());
-  task(`${taskName}:build:esm:tests`, () => buildPackage.compileTests());
+  //task(`${taskName}:build:esm:tests`, () => buildPackage.compileTests());
 
   task(`${taskName}:build:bundles`, () => buildPackage.createBundles());
 
