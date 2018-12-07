@@ -1,5 +1,6 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input } from "@angular/core";
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input, EventEmitter } from "@angular/core";
 import { CanColor, ThemePalette } from "@angular/material/core";
+import { MatSidenav } from"@angular/material/sidenav";
 
 /** Default color palette for top bar to primary */
 const DEFAULT_TOP_BAR_COLOR: ThemePalette = 'primary';
@@ -30,12 +31,31 @@ export interface TopBarMenuAction {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MatTopBar implements TopBarTheme {
-    @Input() title: string = '';
+    @Input() menuTitle: string = '';
     @Input() color: ThemePalette = DEFAULT_TOP_BAR_COLOR;
     @Input() type: TopBarType    = DEFAULT_TOP_BAR_TYPE;
     @Input() menuActions: TopBarMenuAction[] = [];
+    @Input() overflowMenuActions: TopBarMenuAction[] = [];
+    @Input() sideMenuActions: TopBarMenuAction[] = [];
 
+    _sidebarSize = {};
+    
     constructor () {}
+    
+    _toggleTopBarMenu(opened: boolean) {
+        let openedSidebar = {
+            'width':  '100%',
+            'height': '100%',
+            'background-color': 'transparent'
+        };
+
+        let closedSidebar = {
+            'width':  '0%',
+            'height': '0%'
+        };
+
+        this._sidebarSize = opened ? openedSidebar : closedSidebar;
+    }
 
     _setupTopBarClasses() {
         let topBarClasses: any = {};

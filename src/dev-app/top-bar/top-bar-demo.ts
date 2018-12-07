@@ -9,6 +9,7 @@ import { TopBarMenuAction } from "@angular/material/top-bar";
 })
 export class TopBarDemo {
     menuActions: TopBarMenuAction[];
+    overflowMenuActions: TopBarMenuAction[];
 
     constructor () {
         this.menuActions = [
@@ -21,6 +22,19 @@ export class TopBarDemo {
                 matIcon: 'person',
                 menuText: 'Account',
                 onClick: () => { console.log('Account button clicked'); }
+            }
+        ];
+
+        this.overflowMenuActions = [
+            {
+                matIcon: 'autorenew',
+                menuText: 'Refresh',
+                onClick: () => { console.log('Refresh button clicked'); }
+            },
+            {
+                matIcon: 'credit_card',
+                menuText: 'Payment Details',
+                onClick: () => { console.log('Payment Details button clicked'); }
             }
         ];
     }
