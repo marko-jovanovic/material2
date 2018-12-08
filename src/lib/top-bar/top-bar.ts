@@ -17,6 +17,7 @@ import {
     animate,
     transition
 } from '@angular/animations';
+import { MatSidenav } from '@angular/material/sidenav';
 
 /** Default color palette for top bar to primary */
 const DEFAULT_TOP_BAR_COLOR: ThemePalette = 'primary';
@@ -52,11 +53,13 @@ export class MatTopBar implements TopBarTheme, OnInit {
     _currentPosition = 0;
 
     @Input() menuTitle: string = '';
+    @Input() logo: string = '';
     @Input() color: ThemePalette = DEFAULT_TOP_BAR_COLOR;
     @Input() type: TopBarType = DEFAULT_TOP_BAR_TYPE;
     @Input() menuActions: TopBarMenuAction[] = [];
     @Input() overflowMenuActions: TopBarMenuAction[] = [];
-    @Input() sideMenuActions: TopBarMenuAction[] = [];
+    @Input() sideMenuMainActions: TopBarMenuAction[] = [];
+    @Input() sideMenuExtraActions: TopBarMenuAction[] = [];
     @HostListener('window:resize', ['$event'])
     onResize(event?: any) {
         event = event;
@@ -172,5 +175,9 @@ export class MatTopBar implements TopBarTheme, OnInit {
 
         this._headerStyling['mat-top-bar-container-hideable--hidden'] = this.hideable && scrollPosition > this._currentPosition;
         this._currentPosition = scrollPosition;
+    }
+
+    close(sidenav: MatSidenav) {
+        sidenav.close();
     }
 }

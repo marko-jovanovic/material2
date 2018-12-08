@@ -31,8 +31,31 @@
 </div>
 
 <mat-sidenav-container class="mat-top-bar-sidenav-container" [ngStyle]="_sidebarSize">
-    <mat-sidenav #topBarSidenav mode="over" (openedChange)="_toggleTopBarMenu($event)">
-        Sidenav content
+    <mat-sidenav class="mat-sidenav mat-primary" #topBarSidenav mode="over" (openedChange)="_toggleTopBarMenu($event)" autoFocus="false">
+        <div class="mat-tob-bar-sidenav-navbar-header">
+            <div class="mat-tob-bar-sidenav-logo">
+                <img class="mat-tob-bar-sidenav-logo-icon" src="{{ logo }}" alt="">
+                <span class="mat-tob-bar-sidenav-logo-text mat-primary">{{ menuTitle }}</span>
+            </div>
+            <button mat-icon-button (click)="close(topBarSidenav)"><mat-icon class="mat-tob-bar-sidenav-close-button mat-primary">close</mat-icon></button>
+        </div>
+        <div class="mat-top-bar-sidenav-items">
+            <button [color]="color" mat-raised-button 
+                    *ngFor="let sideMenuMainAction of sideMenuMainActions" 
+                    (click)="sideMenuMainAction.onClick()">
+                <mat-icon>{{ sideMenuMainAction.matIcon }}</mat-icon>
+                {{ sideMenuMainAction.menuText }}
+            </button>
+
+        <div class="mat-tob-bar-sidenav-items-bottom">
+            <button [color]="color" mat-raised-button 
+                    *ngFor="let sideMenuExtraAction of sideMenuExtraActions" 
+                    (click)="sideMenuExtraAction.onClick()">
+                <mat-icon>{{ sideMenuExtraAction.matIcon }}</mat-icon>
+                {{ sideMenuExtraAction.menuText }}
+            </button>
+        </div>
+        </div>
     </mat-sidenav>
     <mat-sidenav-content></mat-sidenav-content>
 </mat-sidenav-container>
