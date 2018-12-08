@@ -1,8 +1,19 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input, EventEmitter, AfterViewInit } from "@angular/core";
-import { CanColor, ThemePalette } from "@angular/material/core";
+
+import {
+    Component,
+    ViewEncapsulation,
+    ChangeDetectionStrategy,
+    Input,
+    HostListener,
+    OnInit,
+    AfterViewInit
+} from "@angular/core";
+import {
+    CanColor,
+    ThemePalette
+} from "@angular/material/core";
 import { MatSidenav } from "@angular/material/sidenav";
-import { BreakpointObserver, Breakpoints, MediaMatcher } from "@angular/cdk/layout";
-import { HostListener } from "@angular/core";
+
 /** Default color palette for top bar to primary */
 const DEFAULT_TOP_BAR_COLOR: ThemePalette = 'primary';
 
@@ -31,7 +42,10 @@ export interface TopBarMenuAction {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTopBar implements TopBarTheme, AfterViewInit {
+export class MatTopBar implements TopBarTheme, AfterViewInit, OnInit {
+    _headerStyling: any = {};
+    _sidebarSize = {};
+    _currentPosition = 0;
 
     @Input() menuTitle: string = '';
     @Input() logo: string = '';
@@ -42,19 +56,26 @@ export class MatTopBar implements TopBarTheme, AfterViewInit {
     @Input() sideMenuMainActions: TopBarMenuAction[] = [];
     @Input() sideMenuExtraActions: TopBarMenuAction[] = [];
     @Input() sideMenuActions: TopBarMenuAction[] = [];
+
+    @Input() hideable: boolean = false;
+    @Input() prominent: boolean = false;
+    @Input() backgroundImageUrl: string;
+
     @HostListener('window:resize', ['$event'])
     onResize(event?: any) {
         event = event;
         this._windowResized();
     }
 
-    _sidebarSize = {};
     _overflowMenuSize: number;
     _menuSize: number;
     _lastChangedPx = 0;
-    constructor() {
-
+    constructor() {}
+    
+    ngOnInit() {
+        this._setupTopBarClasses();
     }
+
     ngAfterViewInit() {
         this._overflowMenuSize = this.overflowMenuActions.length;
         this._menuSize = this.menuActions.length;
@@ -139,11 +160,17 @@ export class MatTopBar implements TopBarTheme, AfterViewInit {
     }
 
     _setupTopBarClasses() {
-        let topBarClasses: any = {};
-        topBarClasses[`mat-${this.color}`] = true;
-        topBarClasses[`mat-top-bar-${this.type}`] = true;
+        this._headerStyling[`mat-${this.color}`] = true;
+        this._headerStyling[`mat-top-bar-${this.type}`] = true;
+        this._headerStyling['mat-top-bar-container-hideable'] = this.hideable;
+        this._headerStyling['mat-top-bar-prominent'] = this.prominent;
+    }
 
-        return topBarClasses;
+    @HostListener('window:scroll') checkScroll() {
+        const scrollPosition = window.pageYOffset;
+
+        this._headerStyling['mat-top-bar-container-hideable--hidden'] = this.hideable && scrollPosition > this._currentPosition;
+        this._currentPosition = scrollPosition;
     }
 
     close(sidenav: MatSidenav) {

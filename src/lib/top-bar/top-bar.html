@@ -1,4 +1,6 @@
-<div class="mat-top-bar-container" [ngClass]="_setupTopBarClasses()">
+<div class="mat-top-bar-container" [(ngClass)]="_headerStyling">
+    <img *ngIf="backgroundImageUrl" class="mat-top-bar-background-image" [src]="backgroundImageUrl">
+
     <button mat-icon-button (click)="topBarSidenav.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
