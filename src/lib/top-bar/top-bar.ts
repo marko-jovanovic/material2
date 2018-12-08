@@ -59,6 +59,7 @@ export class MatTopBar implements TopBarTheme, OnInit {
     @Input() sideMenuActions: TopBarMenuAction[] = [];
     @Input() hideable: boolean = false;
     @Input() prominent: boolean = false;
+    @Input() backgroundImageUrl: string;
 
     constructor() {}
 
