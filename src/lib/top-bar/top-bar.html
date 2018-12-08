@@ -1,7 +1,7 @@
 <div class="mat-top-bar-container" [(ngClass)]="_headerStyling">
     <img *ngIf="backgroundImageUrl" class="mat-top-bar-background-image" [src]="backgroundImageUrl">
 
-    <button mat-icon-button (click)="topBarSidenav.toggle()">
+    <button *ngIf="sideMenuMainActions.length > 0" mat-icon-button (click)="topBarSidenav.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
     <h6 class="mat-top-bar-title">{{ menuTitle }}</h6>
@@ -16,7 +16,7 @@
         </button>
 
         <!-- Overflow menu actions -->
-        <button mat-icon-button [matMenuTriggerFor]="verticalMenu">
+        <button *ngIf="overflowMenuActions.length > 0" mat-icon-button [matMenuTriggerFor]="verticalMenu">
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #verticalMenu="matMenu">

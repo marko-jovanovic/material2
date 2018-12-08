@@ -54,6 +54,12 @@ import {TreeDemo} from './tree/tree-demo';
 import {TypographyDemo} from './typography/typography-demo';
 import {VirtualScrollDemo} from './virtual-scroll/virtual-scroll-demo';
 import { TopBarDemo } from 'top-bar/top-bar-demo';
+import { TopBarRegularDemo } from 'top-bar/regular/top-bar-regular';
+import { RegularTopBarWithOverflowAndActionButtonsDemo } from 'top-bar/regular-with-actions-and-overflow/regular-with-actions-and-overflow';
+import { RegularTopBarWithSidenavDemo } from 'top-bar/regular-with-sidenav/regular-with-sidenav';
+import { ProminentTopBarDemo } from 'top-bar/prominent/prominent';
+import { ProminentHideableTopBarDemo } from 'top-bar/prominent-hideable/prominent-hideable';
+import { ProminentTopBarWithBackgroundImageDemo } from 'top-bar/prominent-with-background/prominent-with-background';
 
 export const DEV_APP_ROUTES: Routes = [
   {path: '', component: DevAppHome},
@@ -104,5 +110,11 @@ export const DEV_APP_ROUTES: Routes = [
   {path: 'connected-overlay', component: ConnectedOverlayDemo},
   {path: 'virtual-scroll', component: VirtualScrollDemo},
   {path: 'examples', component: ExamplesPage},
-  {path: 'top-bar', component: TopBarDemo }
+  {path: 'top-bar', component: TopBarDemo },
+  {path: 'top-bar/regular-with-actions-and-overflow', component: RegularTopBarWithOverflowAndActionButtonsDemo },
+  {path: 'top-bar/regular', component: TopBarRegularDemo },
+  {path: 'top-bar/regular-with-sidenav', component: RegularTopBarWithSidenavDemo },
+  {path: 'top-bar/prominent', component: ProminentTopBarDemo },
+  {path: 'top-bar/prominent-hideable', component: ProminentHideableTopBarDemo },
+  {path: 'top-bar/prominent-with-background', component: ProminentTopBarWithBackgroundImageDemo }
 ];

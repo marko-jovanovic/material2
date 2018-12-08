@@ -10,13 +10,6 @@ import {
     CanColor,
     ThemePalette
 } from "@angular/material/core";
-import {
-    trigger,
-    state,
-    style,
-    animate,
-    transition
-} from '@angular/animations';
 import { MatSidenav } from '@angular/material/sidenav';
 
 /** Default color palette for top bar to primary */

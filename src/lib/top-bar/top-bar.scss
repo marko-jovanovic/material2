@@ -24,6 +24,9 @@
 }
 
 .mat-top-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -31,6 +34,7 @@
     height: 65px;
     padding: 16px;
     box-shadow: 2px 4px 10px rgba(0,0,0,.2);
+    z-index: 1;
 }
 
 .menu-actions {
@@ -51,9 +55,6 @@
     align-items: flex-start;
     box-sizing: border-box;
     height: 128px;
-    position: fixed;
-    top: 0;
-    left: 0;
 
     .mat-top-bar-title {
         margin-top: 70px;

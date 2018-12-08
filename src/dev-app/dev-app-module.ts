@@ -67,6 +67,12 @@ import {TreeDemoModule} from './tree/tree-demo-module';
 import {TypographyDemo} from './typography/typography-demo';
 import {VirtualScrollDemo} from './virtual-scroll/virtual-scroll-demo';
 import { TopBarDemo } from 'top-bar/top-bar-demo';
+import { TopBarRegularDemo } from 'top-bar/regular/top-bar-regular';
+import { RegularTopBarWithOverflowAndActionButtonsDemo } from 'top-bar/regular-with-actions-and-overflow/regular-with-actions-and-overflow';
+import { RegularTopBarWithSidenavDemo } from 'top-bar/regular-with-sidenav/regular-with-sidenav';
+import { ProminentTopBarDemo } from 'top-bar/prominent/prominent';
+import { ProminentHideableTopBarDemo } from 'top-bar/prominent-hideable/prominent-hideable';
+import { ProminentTopBarWithBackgroundImageDemo } from 'top-bar/prominent-with-background/prominent-with-background';
 
 @NgModule({
   imports: [
@@ -139,6 +145,12 @@ import { TopBarDemo } from 'top-bar/top-bar-demo';
     TypographyDemo,
     VirtualScrollDemo,
     TopBarDemo,
+    TopBarRegularDemo,
+    RegularTopBarWithOverflowAndActionButtonsDemo,
+    RegularTopBarWithSidenavDemo,
+    ProminentTopBarDemo,
+    ProminentHideableTopBarDemo,
+    ProminentTopBarWithBackgroundImageDemo
   ],
   providers: [
     {provide: OverlayContainer, useClass: FullscreenOverlayContainer},
