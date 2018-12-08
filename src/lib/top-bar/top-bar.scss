@@ -34,9 +34,21 @@
 
 .mat-top-bar-regular {} 
 
+.mat-top-bar-container-hideable {
+    transition: all 0.3s;
+}
+
+.mat-top-bar-container-hideable--hidden {
+    transform: translateY(-100%);
+}
+
 .mat-top-bar-prominent {
-    height: 100px;
-} 
+    box-sizing: border-box;
+    height: 128px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
 .mat-top-bar-dense {} 
 
