@@ -22,6 +22,36 @@
             #{$property}: mat-color($warn, $hue);
         }
     }
+
+    .mat-sidenav {
+        &.mat-primary {
+            #{$property}: mat-color($primary, 400);
+        }
+        
+        &.mat-accent {
+            #{$property}: mat-color($accent, 400);
+        }
+    
+        &.mat-warn {
+            #{$property}: mat-color($warn, 400);
+        }
+    }
+
+    @if $property == 'color' {
+        .mat-tob-bar-sidenav-logo-text, .mat-tob-bar-sidenav-close-button {
+            &.mat-primary {
+                #{$property}: mat-color($primary, 50);
+            }
+            
+            &.mat-accent {
+                #{$property}: mat-color($accent, 50);
+            }
+        
+            &.mat-warn {
+                #{$property}: mat-color($warn, 50);
+            }
+        }
+    }
 }
 
 @mixin mat-top-bar-theme($theme) {
