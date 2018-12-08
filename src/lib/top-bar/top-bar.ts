@@ -1,5 +1,22 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input, HostListener, AfterViewInit } from "@angular/core";
-import { CanColor, ThemePalette } from "@angular/material/core";
+import {
+    Component,
+    ViewEncapsulation,
+    ChangeDetectionStrategy,
+    Input,
+    HostListener,
+    OnInit
+} from "@angular/core";
+import {
+    CanColor,
+    ThemePalette
+} from "@angular/material/core";
+import {
+    trigger,
+    state,
+    style,
+    animate,
+    transition
+} from '@angular/animations';
 
 /** Default color palette for top bar to primary */
 const DEFAULT_TOP_BAR_COLOR: ThemePalette = 'primary';
@@ -29,8 +46,11 @@ export interface TopBarMenuAction {
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
+export class MatTopBar implements TopBarTheme, OnInit {
+    _headerStyling: any = {};
+    _sidebarSize = {};
+    _currentPosition = 0;
 
-export class MatTopBar implements TopBarTheme, AfterViewInit {
     @Input() menuTitle: string = '';
     @Input() color: ThemePalette = DEFAULT_TOP_BAR_COLOR;
     @Input() type: TopBarType = DEFAULT_TOP_BAR_TYPE;
@@ -43,7 +63,6 @@ export class MatTopBar implements TopBarTheme, AfterViewInit {
         this._windowResized();
     }
 
-    _sidebarSize = {};
     _overflowMenuSize: number;
     _menuSize: number;
     _lastChangedPx = 0;
@@ -118,6 +137,14 @@ export class MatTopBar implements TopBarTheme, AfterViewInit {
         this._lastChangedPx = window.innerWidth;
     }
 
+    @Input() hideable: boolean = false;
+    @Input() prominent: boolean = false;
+    @Input() backgroundImageUrl: string;
+
+    ngOnInit() {
+        this._setupTopBarClasses();
+    }
+
     _toggleTopBarMenu(opened: boolean) {
         let openedSidebar = {
             'width': '100%',
@@ -134,10 +161,16 @@ export class MatTopBar implements TopBarTheme, AfterViewInit {
     }
 
     _setupTopBarClasses() {
-        let topBarClasses: any = {};
-        topBarClasses[`mat-${this.color}`] = true;
-        topBarClasses[`mat-top-bar-${this.type}`] = true;
+        this._headerStyling[`mat-${this.color}`] = true;
+        this._headerStyling[`mat-top-bar-${this.type}`] = true;
+        this._headerStyling['mat-top-bar-container-hideable'] = this.hideable;
+        this._headerStyling['mat-top-bar-prominent'] = this.prominent;
+    }
 
-        return topBarClasses;
+    @HostListener('window:scroll') checkScroll() {
+        const scrollPosition = window.pageYOffset;
+
+        this._headerStyling['mat-top-bar-container-hideable--hidden'] = this.hideable && scrollPosition > this._currentPosition;
+        this._currentPosition = scrollPosition;
     }
 }
