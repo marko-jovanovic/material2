@@ -14,6 +14,10 @@
     left: 0;
 }
 
+.mat-sidenav {
+    width: 30%;
+}
+
 .mat-top-bar-title {
     font-size: 20px;
     font-weight: 500;
@@ -41,3 +45,71 @@
 .mat-top-bar-dense {} 
 
 .mat-top-bar-prominent-dense {}
+
+.mat-tob-bar-sidenav-navbar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    min-height: 64px;
+    padding: 0 16px 0 24px;
+    transition: padding 200ms ease;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mat-tob-bar-sidenav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.mat-tob-bar-sidenav-logo-icon {
+    width: 58px;
+    height: 58px;
+    position: relative;
+    left: -12px;
+}
+
+.mat-tob-bar-sidenav-logo-text {
+    margin-left: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.mat-tob-bar-sidenav-close-button {
+    display: block;
+    padding: 0;
+    min-width: 0;
+    width: 40px !important;
+    height: 40px;
+    flex-shrink: 0;
+    line-height: 40px !important;
+    border-radius: 50%;
+}
+
+.mat-top-bar-sidenav-items {
+    display: flex;
+    flex-flow: column;
+
+    button {
+        display: flex;
+        flex-flow: row;
+        border-radius: 0px;
+        height: 48px;
+        width: 100%;
+        border-left: 2px solid;
+
+        mat-icon {
+            margin-right: 10px;
+        }
+    }
+}
+
+.mat-tob-bar-sidenav-items-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -3px 1px -2px rgba(0, 0, 0, 0.2), 0px -2px 2px 0px rgba(0, 0, 0, 0.14), 0px -1px 5px 0px rgba(0, 0, 0, 0.12)
+}

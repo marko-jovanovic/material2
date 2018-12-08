@@ -32,11 +32,13 @@ export interface TopBarMenuAction {
 })
 export class MatTopBar implements TopBarTheme {
     @Input() menuTitle: string = '';
+    @Input() logo: string = '';
     @Input() color: ThemePalette = DEFAULT_TOP_BAR_COLOR;
     @Input() type: TopBarType    = DEFAULT_TOP_BAR_TYPE;
     @Input() menuActions: TopBarMenuAction[] = [];
     @Input() overflowMenuActions: TopBarMenuAction[] = [];
-    @Input() sideMenuActions: TopBarMenuAction[] = [];
+    @Input() sideMenuMainActions: TopBarMenuAction[] = [];
+    @Input() sideMenuExtraActions: TopBarMenuAction[] = [];
 
     _sidebarSize = {};
     
@@ -63,5 +65,9 @@ export class MatTopBar implements TopBarTheme {
         topBarClasses[`mat-top-bar-${this.type}`] = true;
 
         return topBarClasses;
+    }
+
+    close(sidenav: MatSidenav) {
+        sidenav.close();
     }
 }

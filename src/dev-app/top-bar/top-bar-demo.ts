@@ -10,6 +10,8 @@ import { TopBarMenuAction } from "@angular/material/top-bar";
 export class TopBarDemo {
     menuActions: TopBarMenuAction[];
     overflowMenuActions: TopBarMenuAction[];
+    sideMenuMainActions: TopBarMenuAction[];
+    sideMenuExtraActions: TopBarMenuAction[];
 
     constructor () {
         this.menuActions = [
@@ -35,6 +37,32 @@ export class TopBarDemo {
                 matIcon: 'credit_card',
                 menuText: 'Payment Details',
                 onClick: () => { console.log('Payment Details button clicked'); }
+            }
+        ];
+
+        this.sideMenuMainActions = [
+            {
+                matIcon: 'home',
+                menuText: 'Home',
+                onClick: () => { console.log('Home button clicked'); }
+            },
+            {
+                matIcon: 'mood',
+                menuText: 'I am Happy',
+                onClick: () => { console.log('Wee I am Happy!'); }
+            }
+        ];
+
+        this.sideMenuExtraActions = [
+            {
+                matIcon: 'notifications',
+                menuText: 'Notifications',
+                onClick: () => { console.log('Notification button clicked'); }
+            },
+            {
+                matIcon: 'person',
+                menuText: 'My Account',
+                onClick: () => { console.log('My account button clicked'); }
             }
         ];
     }
