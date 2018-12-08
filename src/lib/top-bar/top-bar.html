@@ -1,3 +1,7 @@
+<mat-contextual-action-bar [menuTitle]="contextualActionBar.menuTitle"
+                           [menuActions]="contextualActionBar.menuActions"
+                           [overflowMenuActions]="contextualActionBar.overflowMenuActions"></mat-contextual-action-bar>
+
 <div class="mat-top-bar-container" [ngClass]="_setupTopBarClasses()">
     <button mat-icon-button (click)="topBarSidenav.toggle()">
         <mat-icon>menu</mat-icon>

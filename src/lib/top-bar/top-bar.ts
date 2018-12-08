@@ -20,27 +20,32 @@ export interface TopBarMenuAction {
     onClick: Function;
 }
 
+export abstract class MatBasicTopBar {
+    menuTitle: string = '';
+    menuActions: TopBarMenuAction[];
+    overflowMenuActions: TopBarMenuAction[];
+}
+
 @Component({
     moduleId: module.id,
     selector: 'mat-top-bar',
     exportAs: 'matTopBar',
     templateUrl: 'top-bar.html',
     styleUrls: ['top-bar.css'],
-    inputs: [ 'type' ],
-    encapsulation: ViewEncapsulation.None,
+    inputs: [ 'menuTitle', 'menuActions', 'overflowMenuActions' ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MatTopBar implements TopBarTheme {
-    @Input() menuTitle: string = '';
+export class MatTopBar extends MatBasicTopBar implements TopBarTheme {
     @Input() color: ThemePalette = DEFAULT_TOP_BAR_COLOR;
     @Input() type: TopBarType    = DEFAULT_TOP_BAR_TYPE;
-    @Input() menuActions: TopBarMenuAction[] = [];
-    @Input() overflowMenuActions: TopBarMenuAction[] = [];
     @Input() sideMenuActions: TopBarMenuAction[] = [];
+    @Input() contextualActionBar: MatBasicTopBar;
 
     _sidebarSize = {};
     
-    constructor () {}
+    constructor () {
+        super();
+    }
     
     _toggleTopBarMenu(opened: boolean) {
         let openedSidebar = {

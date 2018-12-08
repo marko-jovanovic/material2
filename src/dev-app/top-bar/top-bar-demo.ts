@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { TopBarMenuAction } from "@angular/material/top-bar";
+import { MatBasicTopBar, TopBarMenuAction } from "@angular/material/top-bar";
 
 @Component({
     moduleId: module.id,
@@ -10,8 +10,37 @@ import { TopBarMenuAction } from "@angular/material/top-bar";
 export class TopBarDemo {
     menuActions: TopBarMenuAction[];
     overflowMenuActions: TopBarMenuAction[];
+    contextualActionBar: MatBasicTopBar;
 
     constructor () {
+        this.contextualActionBar = {
+            menuActions: [
+                {
+                    matIcon: 'delete',
+                    menuText: 'Delete Action',
+                    onClick: () => { console.log('Delete button clicked'); }
+                },
+                {
+                    matIcon: 'edit',
+                    menuText: 'Edit',
+                    onClick: () => { console.log('Edit button clicked'); }
+                }
+            ],
+            menuTitle: 'Action Menu',
+            overflowMenuActions: [
+                {
+                    matIcon: 'insert_photo',
+                    menuText: 'Go to Gallery',
+                    onClick: () => { console.log('Go to Gallery button clicked'); }
+                },
+                {
+                    matIcon: 'insert_comment',
+                    menuText: 'Comment',
+                    onClick: () => { console.log('Comment button clicked'); }
+                }
+            ]
+        }
+
         this.menuActions = [
             {
                 matIcon: 'search',

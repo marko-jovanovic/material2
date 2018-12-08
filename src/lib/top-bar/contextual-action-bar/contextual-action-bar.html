@@ -1,0 +1,28 @@
+<div class="mat-contextual-action-bar">
+    <button mat-icon-button (click)="topBarSidenav.toggle()">
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="mat-menu-actions">
+        <!-- Menu Icons -->
+        <button mat-icon-button
+                *ngFor="let menuAction of menuActions"s
+                [matTooltip]="menuAction.menuText"
+                (click)="menuAction.onClick()">
+            <mat-icon>{{ menuAction.matIcon }}</mat-icon>
+        </button>
+
+        <!-- Overflow menu actions -->
+        <button mat-icon-button [matMenuTriggerFor]="overflowMenu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #overflowMenu="matMenu">
+            <button mat-menu-item
+                    *ngFor="let overflowMenuAction of overflowMenuActions" 
+                    (click)="overflowMenuAction.onClick()">
+                <mat-icon>{{ overflowMenuAction.matIcon }}</mat-icon>
+                {{ overflowMenuAction.menuText }}
+            </button>
+        </mat-menu>
+    </div>
+</div>

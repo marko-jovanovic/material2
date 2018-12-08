@@ -9,6 +9,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTopBar } from "./top-bar";
+import { MatContextualActionBar } from "./contextual-action-bar/contextual-action-bar";
 
 @NgModule({
     imports: [
@@ -24,10 +25,11 @@ import { MatTopBar } from "./top-bar";
         MatCommonModule,
     ],
     exports: [ 
-        MatTopBar, MatCommonModule
+        MatTopBar, MatCommonModule, MatContextualActionBar
     ],
     declarations: [
-        MatTopBar
+        MatTopBar,
+        MatContextualActionBar
     ]
 })
 export class MatTopBarModule {}
